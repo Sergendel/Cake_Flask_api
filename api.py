@@ -1,5 +1,5 @@
 import config
-from cake_schema import CakeSchema
+from schemas.cake_schema import CakeSchema
 from transform.transform_model import TransformModel
 from transform.transform_processing import TransformProcessing
 from flask import Flask, jsonify, request
