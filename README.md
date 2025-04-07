@@ -45,9 +45,10 @@ Cake_Flask_api/
    ```bash
    git clone https://github.com/Sergendel/Cake_Flask_api.git
    cd Cake_Flask_api
-
+   ```
     
-2. Api endpoint: 
+2. **Clone the repository:**
+   ```bash
    POST http://127.0.0.1:8000/predict
    body: 
    {
@@ -56,3 +57,4 @@ Cake_Flask_api/
      "Price": 311
      }
     content-typeL application/json 
+   ```
