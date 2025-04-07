@@ -47,7 +47,7 @@ Cake_Flask_api/
    cd Cake_Flask_api
    ```
     
-2. **Clone the repository:**
+2. **API endpoint and request example:**
    ```bash
    POST http://127.0.0.1:8000/predict
    body: 
