@@ -8,28 +8,29 @@ The Cake Price Prediction API provides endpoints to estimate cake prices based o
 By leveraging trained machine learning models, it offers dynamic pricing predictions to assist in decision-making.
 
 ## Project structire
-Cake_Flask_api/
-├── data/
-│   └── cakes.csv                # Historical sales data
-├── extract/
-│   └── extract_base.py          # base class for data extraction
-│   └── extract_file.py          # file extraction
-│   └── OneHotEncoder.pkl        # pretrained one ot encoder
-├── models/
-│   └── model.pkl                # Trained machine learning model
-├── notebook/
-│   └── analysis.ipynb           # Jupyter Notebook for data analysis
-├── schemas/
-│   └── cake_schema.py           # Data validation schemas
-├── transform/
-│   └── transform_model.py       # model transformation 
-│   └── transform_processing.py  # data transformation 
-├── api.py                       # API route definitions
-├── config.py                    # Configuration settings
-├── main.py                      # Main skript
-├── requirements.txt             # Python dependencies
-└── README.md                    # Project documentation
-
+   ```bash
+   Cake_Flask_api/
+   ├── data/
+   │   └── cakes.csv                # Historical sales data
+   ├── extract/
+   │   └── extract_base.py          # base class for data extraction
+   │   └── extract_file.py          # file extraction
+   │   └── OneHotEncoder.pkl        # pretrained one ot encoder
+   ├── models/
+   │   └── model.pkl                # Trained machine learning model
+   ├── notebook/
+   │   └── analysis.ipynb           # Jupyter Notebook for data analysis
+   ├── schemas/
+   │   └── cake_schema.py           # Data validation schemas
+   ├── transform/
+   │   └── transform_model.py       # model transformation 
+   │   └── transform_processing.py  # data transformation 
+   ├── api.py                       # API route definitions
+   ├── config.py                    # Configuration settings
+   ├── main.py                      # Main skript
+   ├── requirements.txt             # Python dependencies
+   └── README.md                    # Project documentation
+   ```
 
 ## Tech Stack
 
