@@ -12,7 +12,7 @@ schema = CakeSchema()
 transform = TransformProcessing(config)
 model = TransformModel(config)
 
-
+# Cake Price Prediction Endpoint
 @app.route('/predict', methods=['POST'])
 def predict():
    request_data = request.json
@@ -26,12 +26,14 @@ def predict():
        return jsonify(err.messages), 400
 
 
+
    dataset = pd.DataFrame([[
+                            request_body['Radius_cm'],
                             request_body['Layers'],
-                            request_body['Topping'],
-                            request_body['Price']]], columns=config.MODEL_COLUMNS)
-
-
+                            request_body['Topping']]], columns=config.MODEL_COLUMNS).drop(columns=['index'], errors='ignore')
+   #print(f"request_body = {request_body}")
+   if 'Radius_cm' in dataset.columns:
+       dataset.rename(columns={'Radius_cm': 'Radius [cm]'}, inplace=True)
    # transform
    dataset_transform = transform.transform(dataset)
 
@@ -40,7 +42,7 @@ def predict():
    result = model.predict(dataset_transform)
 
 
-   # post processing
+   # post-processing
    result_value = int(result[0])
 
 
@@ -50,4 +52,4 @@ def predict():
 
 
 if __name__ == '__main__':
-   app.run(port=8000)
+   app.run(port=8000, debug=True)
