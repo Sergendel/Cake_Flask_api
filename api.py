@@ -1,7 +1,7 @@
 import config
 from schemas.cake_schema import CakeSchema
 from schemas.topping_schema import  ToppingSchema
-
+import sys
 from transform.transform_model import TransformModel
 from transform.transform_processing import TransformProcessing
 from flask import Flask, jsonify, request
@@ -47,8 +47,6 @@ def predict():
    return jsonify({"predict_result": result_value}, 200)
 
 
-
-
 @app.route('/toppings', methods=['POST'])
 def recommend_toppings():
     request_data = request.json
@@ -89,7 +87,15 @@ def recommend_toppings():
 
     return jsonify({'recommendations': recommendations}), 200
 
-
+# Endpoint to provide model information
+@app.route('/model-info', methods=['GET'])
+def model_info():
+    info = {
+        'python_version': sys.version,
+        'model_version': '1.0',
+        'description': 'Cake Price Prediction Model using basic attributes (radius, layers, topping).'
+    }
+    return jsonify(info), 200
 
 
 if __name__ == '__main__':
