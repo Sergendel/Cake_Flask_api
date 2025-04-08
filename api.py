@@ -7,13 +7,30 @@ from transform.transform_processing import TransformProcessing
 from flask import Flask, jsonify, request
 from marshmallow import ValidationError
 import pandas as pd
-
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 cake_schema = CakeSchema()
 topping_schema = ToppingSchema()
 transform = TransformProcessing(config)
 model = TransformModel(config)
+
+### Swagger UI setup
+SWAGGER_URL = '/swagger'
+API_URL = '/static/swagger.json'
+swaggerui_blueprint = get_swaggerui_blueprint(
+    SWAGGER_URL,
+    API_URL,
+    config={'app_name': "Cake Prediction API"}
+)
+app.register_blueprint(swaggerui_blueprint, url_prefix=SWAGGER_URL)
+
+
+
+
+
+
+
 
 # Cake Price Prediction Endpoint
 @app.route('/predict', methods=['POST'])

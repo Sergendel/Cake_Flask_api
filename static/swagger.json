@@ -1,0 +1,64 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Cake Prediction API",
+    "description": "API for cake price prediction and topping recommendations."
+  },
+  "host": "localhost:8000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/predict": {
+      "post": {
+        "summary": "Predict cake price",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "Radius [cm]": {"type": "integer"},
+              "Layers": {"type": "integer"},
+              "Topping": {"type": "string"}
+            }
+          }
+        }],
+        "responses": {
+          "200": {"description": "Successful prediction"},
+          "400": {"description": "Validation Error"}
+        }
+      }
+    },
+    "/toppings": {
+      "post": {
+        "summary": "Recommend toppings with prices",
+        "parameters": [{
+          "in": "body",
+          "name": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "Radius [cm]": {"type": "integer"},
+              "Layers": {"type": "integer"}
+            }
+          }
+        }],
+        "responses": {
+          "200": {"description": "Toppings recommendations"},
+          "400": {"description": "Validation Error"}
+        }
+      }
+    },
+    "/model-info": {
+      "get": {
+        "summary": "Get model information",
+        "responses": {
+          "200": {"description": "Model details"}
+        }
+      }
+    }
+  }
+}
